@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>互动剧情选择系统</title>
+  <link rel="stylesheet" crossorigin href="./assets/index-DS8dVq-9.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">Reality Acting + Web Choice</p>
+      <h1>互动剧情选择系统</h1>
+      <p class="subtitle">玩家选择剧情走向，网页负责播放 BGM / 旁白 / 音效，并提示演员接下来的表演。</p>
+    </section>
+
+    <section id="roomScreen" class="card screen active">
+      <h2>选择房间</h2>
+      <p class="hint">不同房间可以拥有不同剧情、旁白和音效。</p>
+      <div id="roomList" class="room-grid"></div>
+    </section>
+
+    <section id="startScreen" class="card screen">
+      <button id="backRoomFromStartBtn" class="ghost-btn">← 返回房间</button>
+      <div class="start-content">
+        <p class="label">已选择房间</p>
+        <h2 id="selectedRoomTitle"></h2>
+        <p id="selectedRoomDescription" class="hint"></p>
+        <button id="startGameBtn" class="primary-btn big-btn">开始进入第一阶段</button>
+        <p class="hint small-hint">点击开始后，会自动播放第一阶段 BGM / 剧情音频。</p>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="card screen">
+      <div class="top-bar">
+        <button id="backRoomBtn" class="ghost-btn">← 返回房间</button>
+        <span id="stageCounter" class="pill"></span>
+      </div>
+
+      <h2 id="roomTitle"></h2>
+      <h3 id="stageTitle"></h3>
+
+      <div class="panel">
+        <p class="label">开场 / 选择前剧情</p>
+        <div id="preScene" class="script-box"></div>
+        <button id="playSceneBtn" class="primary-btn">重新播放本阶段 BGM / 剧情音频</button>
+      </div>
+
+      <div class="panel">
+        <p class="label">玩家选择</p>
+        <button id="enterChoicesBtn" class="primary-btn wide-btn">进入选择</button>
+        <div id="choiceList" class="choice-list" style="display:none;"></div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="card screen">
+      <div class="top-bar">
+        <button id="backChoiceBtn" class="ghost-btn">← 回到选择</button>
+        <span id="resultBadge" class="pill"></span>
+      </div>
+
+      <h2 id="resultTitle"></h2>
+
+      <div class="panel">
+        <p class="label">旁白 / 结果</p>
+        <div id="resultNarration" class="script-box"></div>
+        <button id="playResultBtn" class="primary-btn">重新播放结果旁白 / 音效</button>
+      </div>
+
+      <div class="panel actor-panel">
+        <p class="label">演员需要饰演</p>
+        <div id="actorAction" class="script-box"></div>
+      </div>
+
+      <button id="nextStageBtn" class="primary-btn wide-btn">进入下一阶段</button>
+    </section>
+  </main>
+
+  <dialog id="confirmDialog" class="confirm-dialog">
+    <h3 id="confirmTitle">确认选择？</h3>
+    <p id="confirmText"></p>
+    <div class="dialog-actions">
+      <button id="cancelConfirmBtn" class="ghost-btn dark-text">取消</button>
+      <button id="confirmChoiceBtn" class="danger-btn">确认</button>
+    </div>
+  </dialog>
+
+  <audio id="mainAudio"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
